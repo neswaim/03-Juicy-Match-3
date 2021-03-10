@@ -1,0 +1,172 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Grid/grid.gd" type="Script" id=1]
+[ext_resource path="res://Pieces/Piece Background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/HUD.gd" type="Script" id=3]
+[ext_resource path="res://Assets/FFF_NEPSZA-BADSAG-Bold.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://UI/Camera.gd" type="Script" id=5]
+[ext_resource path="res://Assets/cow.wav" type="AudioStream" id=6]
+[ext_resource path="res://Assets/music.ogg" type="AudioStream" id=7]
+[ext_resource path="res://UI/Instructions.gd" type="Script" id=8]
+[ext_resource path="res://Assets/brush/rock.jpg" type="Texture" id=9]
+[ext_resource path="res://Assets/brush/color.jpg" type="Texture" id=10]
+[ext_resource path="res://Assets/brush/bush2.jpg" type="Texture" id=11]
+[ext_resource path="res://Assets/brush/bush1.jpg" type="Texture" id=12]
+[ext_resource path="res://Assets/brush/flowers.jpg" type="Texture" id=13]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 4 )
+
+[node name="Game" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 573.0
+margin_bottom = 1022.0
+color = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="color" type="Sprite" parent="ColorRect"]
+position = Vector2( 289.039, 512.568 )
+scale = Vector2( 2.06652, 20.279 )
+texture = ExtResource( 10 )
+
+[node name="bush2" type="Sprite" parent="ColorRect/color"]
+position = Vector2( 106.136, 21.8188 )
+scale = Vector2( 0.309109, 0.0346688 )
+texture = ExtResource( 11 )
+
+[node name="rock2" type="Sprite" parent="ColorRect/color"]
+position = Vector2( -91.8804, 21.9034 )
+scale = Vector2( 0.356447, 0.0327102 )
+texture = ExtResource( 9 )
+
+[node name="rock" type="Sprite" parent="ColorRect/color"]
+position = Vector2( -89.2109, 22.1139 )
+scale = Vector2( 0.356447, 0.0327102 )
+
+[node name="bush1" type="Sprite" parent="ColorRect/color"]
+position = Vector2( 17.9285, -22.5772 )
+rotation = -3.14159
+scale = Vector2( 0.292012, 0.0275851 )
+texture = ExtResource( 12 )
+
+[node name="flowers" type="Sprite" parent="ColorRect/color"]
+position = Vector2( 89.5471, -20.8638 )
+rotation = 3.14159
+scale = Vector2( 0.483904, 0.049312 )
+texture = ExtResource( 13 )
+
+[node name="bush3" type="Sprite" parent="ColorRect/color"]
+position = Vector2( -78.7225, -21.5931 )
+rotation = 3.14159
+scale = Vector2( 0.345134, 0.0345499 )
+
+[node name="grid" type="Node2D" parent="."]
+script = ExtResource( 1 )
+width = 7
+height = 10
+xStart = 80
+yStart = 832
+offset = 70
+background = ExtResource( 2 )
+
+[node name="Camera" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+script = ExtResource( 5 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
+
+[node name="Cow" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="Dying" type="Node2D" parent="."]
+
+[node name="HUD" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="HUD"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 576.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Score: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time" type="Label" parent="HUD"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 565.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Time:"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="HUD"]
+autostart = true
+
+[node name="Instructions" type="Control" parent="HUD"]
+pause_mode = 2
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="HUD/Instructions"]
+margin_right = 576.0
+margin_bottom = 1024.0
+color = Color( 0, 0, 0, 0.752941 )
+
+[node name="Label" type="Label" parent="HUD/Instructions"]
+margin_right = 576.0
+margin_bottom = 691.0
+custom_fonts/font = SubResource( 2 )
+text = "Level 1
+
+How many points can
+you score in 60 seconds?"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Countdown_label" type="Label" parent="HUD/Instructions"]
+margin_right = 576.0
+margin_bottom = 1024.0
+custom_fonts/font = SubResource( 3 )
+text = "Starting in"
+align = 1
+valign = 1
+
+[node name="Countdown" type="Timer" parent="HUD/Instructions"]
+autostart = true
+[connection signal="timeout" from="HUD/Timer" to="HUD" method="_on_Timer_timeout"]
+[connection signal="timeout" from="HUD/Instructions/Countdown" to="HUD/Instructions" method="_on_Countdown_timeout"]
