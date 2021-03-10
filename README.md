@@ -16,10 +16,15 @@ Simple match game with added features to Juice it up.
 
 Assets used:
 Font https://fontesk.com/nepszabadsag-font/
+
 Sound Effect https://freesound.org/people/Tats14/sounds/408783/
+
 Shader https://godotshaders.com/shader/teleport-effect/
+
 Background Images https://www.freepik.com/free-photos-vectors/cartoon-grass , https://pixabay.com/illustrations/farm-background-farm-barn-green-4997628/
+
 Sprites https://kenney.nl/assets/animal-pack-redux , https://kenney.nl/assets/puzzle-pack-2
+
 Music https://patrickdearteaga.com/chiptune-8-bit-retro/
 
 ## References 
